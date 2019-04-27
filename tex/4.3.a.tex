@@ -1,0 +1,27 @@
+% Project Report 2 Section 4.3 (Relational Algebra)
+
+\documentclass[11pt, letterpaper]{article}
+
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fullpage}
+
+
+\begin{document}
+
+    Relational Algebra
+
+    \begin{align*}
+        Tests           & := \pi_{\text{Diagnosis, VisitID, StaffID, `Test'}}(Tests) \\
+        Tests           & := \rho_{Tests(\text{Result, VisitID, StaffID, RecordType})}(Tests) \\
+        Treatments      & := \pi_{\text{Prescription, VisitID, StaffID, `Treatment'}}(Treatments) \\
+        Treatments      & := \rho_{Treatment(\text{Result, VisitID, StaffID, RecordType}}(Treatments) \\
+        MedicalRecords  & := Tests \cup Treatments & \\
+        PatientRecords  & := Patients \Join_{Patients.PatientID = Visits.VisitID} Visits \\
+        PatientRecords  & := PatientRecords \Join_{Visits.VisitID = MedicalRecords.VisitID} MedicalRecords \\
+        PatientRecords  & := \pi_{\text{RecordType, Result, StaffID, Date(StartDate), Date(EndDate)}}(PatientRecords) \\
+        PatientRecords  & := \sigma_{\begin{subarray}{l}Patients.PatientID = 1 \\ \text{AND `1998-03-01'} \leq Date(StartDate) \\ \text{AND `1998-03-31'} \geq Date(EndDate)\end{subarray}}(PatientRecords) \\
+    \end{align*}
+
+\end{document}

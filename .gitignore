@@ -1,0 +1,18 @@
+# IDE Files
+.idea/
+*.iml
+.settings/
+bin/
+.classpath
+.project
+
+
+# Latex Files
+*.aux
+*.log
+*.pdf
+
+
+# Java
+target/
+*.class

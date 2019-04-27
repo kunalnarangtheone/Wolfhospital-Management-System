@@ -1,0 +1,27 @@
+% Project Report 2 Section 4.3 (Relational Algebra)
+
+\documentclass[11pt, letterpaper]{article}
+
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fullpage}
+
+
+\begin{document}
+
+    Relational Algebra
+
+    \begin{align*}
+        Tests          & := \pi_{\text{Diagnosis, VisitID, StaffID, `Test'}}(Test) \\
+        Tests          & := \rho_{Test(\text{Result, VisitID, StaffID, RecordType})}(Tests) \\
+        Treatments     & := \pi_{\text{Prescription, VisitID, StaffID, `Treatment'}}(Treatments) \\
+        Treatments     & := \rho_{Treatments(\text{Result, VisitID, StaffID, RecordType})}(Treatments) \\
+        MedicalRecords & := Tests \cup Treatments \\
+        PatientRecords & := Patients \Join_{Patients.PatientID = Visits.PatientID} Visits \\
+        PatientRecords & := PatientRecords \Join_{Visits.VisitID = MedicalRecords.VisitID} MedicalRecords \\
+        PatientRecords & := \sigma_{Visits.EndDate \text{ IS NULL AND } MedicalRecords.StaffID = 1}(PatientRecords) \\
+        PatientRecord  & := \pi_{\text{PatientID, SSN, Name, DOB, Gender, PhoneNumber, Address, Status}}(PatientRecord) \\
+    \end{align*}
+
+\end{document}
